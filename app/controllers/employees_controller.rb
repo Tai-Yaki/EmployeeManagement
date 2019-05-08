@@ -25,6 +25,7 @@ class EmployeesController < ApplicationController
   # POST /employees.json
   def create
     @employee = Employee.new(employee_params)
+    @employee.position = "なし" if @employee.position.empty?
 
     respond_to do |format|
       if @employee.save
@@ -69,6 +70,7 @@ class EmployeesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def employee_params
-      params.require(:employee).permit(:name, :join_date, :gender, :position)
+      employee_params = params.require(:employee).permit(:name, :join_date, :gender_id, :position)
+      employee_params.position = "なし" if employee_params.position.empty?
     end
 end
