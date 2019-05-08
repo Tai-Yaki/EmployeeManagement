@@ -1,0 +1,15 @@
+current directory: /Users/taiki/Desktop/Program/Ruby/practice/EmployeeManagement/vendor/bundle/ruby/2.6.0/gems/bindex-0.7.0/ext/skiptrace
+/Users/taiki/.rbenv/versions/2.6.1/bin/ruby -I /Users/taiki/.rbenv/versions/2.6.1/lib/ruby/2.6.0 -r ./siteconf20190508-17676-107mat.rb extconf.rb
+creating Makefile
+
+current directory: /Users/taiki/Desktop/Program/Ruby/practice/EmployeeManagement/vendor/bundle/ruby/2.6.0/gems/bindex-0.7.0/ext/skiptrace
+make "DESTDIR=" clean
+
+current directory: /Users/taiki/Desktop/Program/Ruby/practice/EmployeeManagement/vendor/bundle/ruby/2.6.0/gems/bindex-0.7.0/ext/skiptrace
+make "DESTDIR="
+compiling cruby.c
+linking shared-object skiptrace/cruby.bundle
+
+current directory: /Users/taiki/Desktop/Program/Ruby/practice/EmployeeManagement/vendor/bundle/ruby/2.6.0/gems/bindex-0.7.0/ext/skiptrace
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 cruby.bundle ./.gem.20190508-17676-1yq0h86/skiptrace
