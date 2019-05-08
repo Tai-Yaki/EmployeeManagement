@@ -1,24 +1,22 @@
-<p id="notice"><%= notice %></p>
-
 <p>
-  <strong>Name:</strong>
+  <strong>名前:</strong>
   <%= @employee.name %>
 </p>
 
 <p>
-  <strong>Join date:</strong>
-  <%= @employee.join_date %>
+  <strong>入社日:</strong>
+  <%= @employee.join_date.to_date %>
 </p>
 
 <p>
-  <strong>Gender:</strong>
-  <%= @employee.gender %>
+  <strong>性別:</strong>
+  <%= @employee.gender.name %>
 </p>
 
 <p>
-  <strong>Position:</strong>
+  <strong>役職:</strong>
   <%= @employee.position %>
 </p>
 
-<%= link_to 'Edit', edit_employee_path(@employee) %> |
-<%= link_to 'Back', employees_path %>
+<%= link_to '編集', edit_employee_path(@employee) %> |
+<%= link_to '一覧へ', employees_path %>
