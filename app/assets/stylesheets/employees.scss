@@ -1,3 +1,44 @@
 // Place all the styles related to the Employees controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.employees {
+  .btn-wrap {
+    display: flex;
+    justify-content: center;
+
+    & > * {
+      margin-right: 15px;
+    }
+  }
+
+  .btn-th, .btn-td {
+    width: 10%;
+  }
+
+  .table {
+    thead {
+      font-size: 2rem;
+    }
+    tbody td{
+      font-size: 1.5rem;
+    }
+
+    td, th {
+      padding-left: 2rem;
+    }
+  }
+
+  .top-content {
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+
+    .btn-bg {
+      height: 100%;
+      padding: 1rem 3rem;
+
+      font-size: 1.5rem;
+    }
+  }
+}
