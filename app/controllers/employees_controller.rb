@@ -4,6 +4,7 @@ class EmployeesController < ApplicationController
   # GET /employees
   # GET /employees.json
   def index
+    session[:employee] = nil
     @employees = Employee.all
   end
 
@@ -15,12 +16,13 @@ class EmployeesController < ApplicationController
 
   # GET /employees/new
   def new
-    @employee = Employee.new
+    @employee = Employee.new(session[:employee] || {})
     @title = "新規登録"
   end
 
   # GET /employees/1/edit
   def edit
+    @employee = Employee.new(session[:employee]) if session[:employee]
     @title = "編集"
   end
 
@@ -31,10 +33,14 @@ class EmployeesController < ApplicationController
 
     respond_to do |format|
       if @employee.save
-        format.html { redirect_to @employee, notice: 'Employee was successfully created.' }
+        session[:employee] = nil
+        flash[:info] = "登録しました。"
+        format.html { redirect_to @employee }
         format.json { render :show, status: :created, location: @employee }
       else
-        format.html { render :new }
+        session[:employee] = @employee.attributes.slice(*employee_params.keys)
+        flash[:danger] = @employee.errors.keys.map { |key| [key, @employee.errors.full_messages_for(key)] }.to_h 
+        format.html { redirect_to :new_employee }
         format.json { render json: @employee.errors, status: :unprocessable_entity }
       end
     end
@@ -45,10 +51,14 @@ class EmployeesController < ApplicationController
   def update
     respond_to do |format|
       if @employee.update(employee_params)
-        format.html { redirect_to @employee, notice: 'Employee was successfully updated.' }
+        session[:employee] = nil
+        flash[:info] = "更新しました。"
+        format.html { redirect_to @employee }
         format.json { render :show, status: :ok, location: @employee }
       else
-        format.html { render :edit }
+        session[:employee] = @employee.attributes.slice(*employee_params.keys)
+        flash[:danger] = @employee.errors.keys.map { |key| [key, @employee.errors.full_messages_for(key)] }.to_h 
+        format.html { redirect_to :edit_employee }
         format.json { render json: @employee.errors, status: :unprocessable_entity }
       end
     end
@@ -59,7 +69,8 @@ class EmployeesController < ApplicationController
   def destroy
     @employee.destroy
     respond_to do |format|
-      format.html { redirect_to employees_url, notice: 'Employee was successfully destroyed.' }
+      flash[:info] = "削除しました。"
+      format.html { redirect_to employees_url }
       format.json { head :no_content }
     end
   end
@@ -73,6 +84,6 @@ class EmployeesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def employee_params
       position = params[:employee][:position]
-      params.require(:employee).permit(:name, :join_date, :gender_id).merge(position: (position.empty? ? "なし" : position))
+      params.require(:employee).permit(:name, :join_date, :gender_id, :email).merge(position: (position.empty? ? "なし" : position))
     end
 end

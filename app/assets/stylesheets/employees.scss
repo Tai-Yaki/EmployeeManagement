@@ -6,6 +6,18 @@
   margin-top: 1.5rem;
   font-size: 2rem;
 
+  .flash-sm {
+    width: 80%;
+    margin: auto;
+    margin-bottom: 1.5rem;
+  }
+
+  .flash-md {
+    width: 95%;
+    margin: auto;
+    margin-bottom: 1.5rem;
+  }
+
   .btn-wrap {
     display: flex;
     justify-content: center;
@@ -79,5 +91,20 @@
         color: white;
       }
     }
+
+    .btn-outline-danger {
+      &:visited {
+        color: #dc3545;
+      }
+
+      &:hover {
+        color: white;
+      }
+    }
+  }
+
+  .row-show {
+    margin-bottom: 2rem;
+    font-size: 3rem;
   }
 }
