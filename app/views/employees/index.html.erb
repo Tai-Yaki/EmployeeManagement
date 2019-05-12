@@ -1,7 +1,6 @@
 <div class="employees">
   <div class="top-content">
-    <h1>従業員一覧</h1>
-    <%= button_to("従業員追加", {action: "new"}, method: :get, class: "btn-bg btn-primary" ) %>
+    <%= button_to("新規登録", {action: "new"}, method: :get, class: "btn-lg btn-primary" ) %>
   </div>
 
   <table class="table">
@@ -22,6 +21,9 @@
         <th>
           役職
         </th>
+        <th>
+          メールアドレス
+        </th>
         <th class="btn-th"></th>
       </tr>
     </thead>
@@ -35,7 +37,7 @@
             <%= employee.name %>
           </td>
           <td>
-            <%= employee.join_date.to_date %>
+            <%= employee.join_date.to_date.strftime("%Y年%-m月%-d日") %>
           </td>
           <td>
             <%= employee.gender.name %>
@@ -43,10 +45,13 @@
           <td>
             <%= employee.position %>
           </td>
+          <td>
+            <%= employee.email %>
+          </td>
           <td class="btn-td">
             <div class="btn-wrap">
-              <%= button_to("詳細", {action: "show", id: employee.id}, method: :get, class: "btn-bg btn-outline-primary" ) %>
-              <%= button_to("編集", {action: "edit", id: employee.id}, method: :get, class: "btn-bg btn-outline-primary" ) %>
+              <%= button_to("詳細", {action: "show", id: employee.id}, method: :get, class: "btn-lg btn-outline-primary" ) %>
+              <%= button_to("編集", {action: "edit", id: employee.id}, method: :get, class: "btn-lg btn-outline-primary" ) %>
             </div>
           </td>
         </tr>

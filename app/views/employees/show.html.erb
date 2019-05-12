@@ -1,26 +1,51 @@
-<div class="top-content">
-  <h1>詳細</h1>
+<div class="employees">
+  <div class="center-content">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2">
+          名前
+        </div>
+        <div class="col-md-6">
+          <%= @employee.name %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2">
+          入社日
+        </div>
+        <div class="col-md-6">
+          <%= @employee.join_date.to_date.strftime("%Y年%-m月%-d日") %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2">
+          性別
+        </div>
+        <div class="col-md-6">
+          <%= @employee.gender.name %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2">
+          役職
+        </div>
+        <div class="col-md-6">
+          <%= @employee.position %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2">
+          メールアドレス
+        </div>
+        <div class="col-md-6">
+          <%= @employee.email.blank? ? "設定されていません" : @employee.email %>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <%= link_to '一覧へ', employees_path, class: "btn btn-lg btn-outline-secondary col-sm-2" %>
+      <%= link_to '編集', edit_employee_path(@employee), class: "btn btn-lg btn-outline-primary col-sm-2" %>
+    </div>
+  </div>
 </div>
-
-<p>
-  <strong>名前:</strong>
-  <%= @employee.name %>
-</p>
-
-<p>
-  <strong>入社日:</strong>
-  <%= @employee.join_date.to_date %>
-</p>
-
-<p>
-  <strong>性別:</strong>
-  <%= @employee.gender.name %>
-</p>
-
-<p>
-  <strong>役職:</strong>
-  <%= @employee.position %>
-</p>
-
-<%= link_to '編集', edit_employee_path(@employee) %> |
-<%= link_to '一覧へ', employees_path %>

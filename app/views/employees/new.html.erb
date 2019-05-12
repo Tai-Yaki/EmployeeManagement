@@ -1,8 +1,7 @@
-<div class="top-content">
-  <h1>新規登録</h1>
+<div class="employees">
+  <div class="center-content">
+    <% @submit_str = "登録" %>
+    <%= render 'form', employee: @employee %>
+  </div>
+
 </div>
-
-<% @submit_str = "登録" %>
-<%= render 'form', employee: @employee %>
-
-<%= link_to '一覧へ', employees_path %>

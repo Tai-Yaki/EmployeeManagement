@@ -25,4 +25,26 @@ body {
   h1 {
     font-size: 3rem;
   }
+
+  .top-title {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 2.5%;
+
+    h2, a {
+      color: white;
+    }
+    
+    a {
+      background-color: transparent;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+    .nav {
+      justify-content: flex-end;
+    }
+  }
 }
