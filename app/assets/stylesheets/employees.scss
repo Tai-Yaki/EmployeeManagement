@@ -71,6 +71,10 @@
     .form-group {
       margin-bottom: 3rem;
     }
+
+    .form-flex {
+      display: flex;
+    }
   }
 
   .actions {
@@ -106,5 +110,16 @@
   .row-show {
     margin-bottom: 2rem;
     font-size: 3rem;
+  }
+
+  .profile-container {
+    display: flex;
+  }
+
+  .image-preview, .prof-image-container {
+    width: 130px;
+    height: 130px;
+    padding: 0;
+    border: 1px solid black;
   }
 }

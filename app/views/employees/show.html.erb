@@ -14,45 +14,50 @@
   <% end %>
 
   <div class="center-content">
-    <div class="container">
-      <div class="row row-show">
-        <div class="col-md-5">
-          名前
-        </div>
-        <div class="col-md-6">
-          <%= @employee.name %>
-        </div>
+    <div class="row">
+      <div class="prof-image-container">
+        <%= image_tag "#{@employee.profile_image.image if !@employee.profile_image.nil?}" %>
       </div>
-      <div class="row row-show">
-        <div class="col-md-5">
-          入社日
+      <div class="container col-sm-10">
+        <div class="row row-show">
+          <div class="col-md-5">
+            名前
+          </div>
+          <div class="col-md-6">
+            <%= @employee.name %>
+          </div>
         </div>
-        <div class="col-md-6">
-          <%= @employee.join_date.to_date.strftime("%Y年%-m月%-d日") %>
+        <div class="row row-show">
+          <div class="col-md-5">
+            入社日
+          </div>
+          <div class="col-md-6">
+            <%= @employee.join_date.to_date.strftime("%Y年%-m月%-d日") %>
+          </div>
         </div>
-      </div>
-      <div class="row row-show">
-        <div class="col-md-5">
-          性別
+        <div class="row row-show">
+          <div class="col-md-5">
+            性別
+          </div>
+          <div class="col-md-6">
+            <%= @employee.gender.name %>
+          </div>
         </div>
-        <div class="col-md-6">
-          <%= @employee.gender.name %>
+        <div class="row row-show">
+          <div class="col-md-5">
+            役職
+          </div>
+          <div class="col-md-6">
+            <%= @employee.position %>
+          </div>
         </div>
-      </div>
-      <div class="row row-show">
-        <div class="col-md-5">
-          役職
-        </div>
-        <div class="col-md-6">
-          <%= @employee.position %>
-        </div>
-      </div>
-      <div class="row row-show">
-        <div class="col-md-5">
-          メールアドレス
-        </div>
-        <div class="col-md-6">
-          <%= @employee.email.blank? ? "設定されていません" : @employee.email %>
+        <div class="row row-show">
+          <div class="col-md-5">
+            メールアドレス
+          </div>
+          <div class="col-md-6">
+            <%= @employee.email.blank? ? "設定されていません" : @employee.email %>
+          </div>
         </div>
       </div>
     </div>

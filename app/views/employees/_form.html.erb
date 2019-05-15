@@ -9,43 +9,55 @@
 <% end %>
 
 <%= form_with(model: employee, local: true, class: "form") do |form| %>
-  <div class="form-group row">
-    <%= form.label "名前", for: "name", class: "col-sm-2" %>
-    <%= form.text_field :name, id: "name", class: "col-sm-5" %>
-  </div>
-
-  <div class="form-group row">
-    <%= form.label "入社日", class: "col-sm-2" %>
-    <%=
-      raw sprintf(
-        form.date_select(
-          :join_date,
-          use_month_numbers: true,
-          class: "col-sm-10",
-          date_separator: '%s'
-        ),
-        '年 ', '月 '
-      ) + '日'
-    %>
-  </div>
-
-  <div class="form-group row">
-    <%= form.label "性別", class: "col-sm-2" %>
-    <div class="radio_group col-sm-10">
-      <label><%= form.radio_button :gender_id, 1, checked: true %>男</label>
-      <label><%= form.radio_button :gender_id, 2 %>女</label>
-      <label><%= form.radio_button :gender_id, 3 %>その他</label>
+  <div class="row">
+    <div class="image-content col-sm-4">
+      <div class="image-preview">
+        <%= image_tag "#{ employee.profile_image.image if !employee.profile_image.nil? }" %>
+      </div>
+      <%= form.fields_for :profile_image do |profile_image_fields| %>
+        <%= profile_image_fields.file_field :image, id: "prof-image" %>
+      <% end %>
     </div>
-  </div>
+    <div class="col-sm-8">
+      <div class="form-group row">
+        <%= form.label "名前", for: "name", class: "col-sm-5" %>
+        <%= form.text_field :name, id: "name", class: "col-sm-7" %>
+      </div>
 
-  <div class="form-group row">
-    <%= form.label "役職", for: "position", class: "col-sm-2" %>
-    <%= form.text_field :position, id: "position", class: "col-sm-5" %>
-  </div>
+      <div class="form-group row">
+        <%= form.label "入社日", class: "col-sm-5" %>
+        <%=
+          raw sprintf(
+            form.date_select(
+              :join_date,
+              use_month_numbers: true,
+              class: "col-sm-7",
+              date_separator: '%s'
+            ),
+            '年 ', '月 '
+          ) + '日'
+        %>
+      </div>
 
-  <div class="form-group row">
-    <%= form.label "メールアドレス", for: "email", class: "col-sm-2" %>
-    <%= form.text_field :email, id: "email", class: "col-sm-5" %>
+      <div class="form-group row">
+        <%= form.label "性別", class: "col-sm-5" %>
+        <div class="radio_group col-sm-7">
+          <label><%= form.radio_button :gender_id, 1, checked: true %>男</label>
+          <label><%= form.radio_button :gender_id, 2 %>女</label>
+          <label><%= form.radio_button :gender_id, 3 %>その他</label>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <%= form.label "役職", for: "position", class: "col-sm-5" %>
+        <%= form.text_field :position, id: "position", class: "col-sm-7" %>
+      </div>
+
+      <div class="form-group row">
+        <%= form.label "メールアドレス", for: "email", class: "col-sm-5" %>
+        <%= form.text_field :email, id: "email", class: "col-sm-7" %>
+      </div>
+    </div>
   </div>
 
   <div class="actions">
