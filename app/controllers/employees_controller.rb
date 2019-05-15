@@ -11,19 +11,16 @@ class EmployeesController < ApplicationController
   # GET /employees/1
   # GET /employees/1.json
   def show
-    @title = "詳細"
   end
 
   # GET /employees/new
   def new
     @employee = Employee.new(session[:employee] || {})
-    @title = "新規登録"
   end
 
   # GET /employees/1/edit
   def edit
     @employee = Employee.new(session[:employee]) if session[:employee]
-    @title = "編集"
   end
 
   # POST /employees

@@ -1,4 +1,8 @@
 <div class="employees">
+  <% content_for :title do %>
+    ／ 詳細
+  <% end %>
+
   <% if flash[:info] %>
     <div class="alert alert-info flash-sm"><%= flash[:info] %></div>
   <% else %>
