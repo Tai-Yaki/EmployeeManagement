@@ -10,11 +10,9 @@ $(function() {
 
     reader.onload = (function(file) {
       return function(e) {
-        var img_src = e.target.result;
-
         $preview.empty();
         $preview.append($("<img>").attr({
-          src: img_src,
+          src: e.target.result,
           class: "preview",
           title: file.name
         }));
@@ -22,8 +20,7 @@ $(function() {
         $(".preview").css("width", "128px");
         $(".preview").css("height", "128px");
         $(".preview").css("object-fit", "contain");
-        $(".preview").css("display", "block");
-        $(".preview").css("margin", "auto");
+        $(".preview").css("background-color", "black");
       };
     })(file);
 
