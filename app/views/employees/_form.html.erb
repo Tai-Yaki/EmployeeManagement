@@ -12,7 +12,7 @@
   <div class="row">
     <div class="image-content col-sm-4">
       <div class="image-preview">
-        <%= image_tag "#{ employee.profile_image.image if !employee.profile_image.nil? }" %>
+        <%= image_tag  employee.profile_image.image.blank? ? "/assets/default.jpg" : employee.profile_image.image.to_s %>
       </div>
       <%= form.fields_for :profile_image do |profile_image_fields| %>
         <%= profile_image_fields.file_field :image, id: "prof-image" %>

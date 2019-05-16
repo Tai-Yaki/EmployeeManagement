@@ -16,7 +16,7 @@
   <div class="center-content">
     <div class="row">
       <div class="prof-image-container">
-        <%= image_tag "#{@employee.profile_image.image if !@employee.profile_image.nil?}" %>
+        <%= image_tag @employee.profile_image.nil? ? "/assets/default.jpg" : @employee.profile_image.image.to_s %>
       </div>
       <div class="container col-sm-10">
         <div class="row row-show">

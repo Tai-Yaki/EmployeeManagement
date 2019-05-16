@@ -43,6 +43,8 @@ gem 'faker'
 
 gem 'carrierwave'
 
+gem 'rmagick'
+
 gem "jquery-rails"
 
 group :development, :test do
