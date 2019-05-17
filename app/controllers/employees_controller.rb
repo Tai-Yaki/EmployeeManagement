@@ -48,7 +48,7 @@ class EmployeesController < ApplicationController
   # PATCH/PUT /employees/1.json
   def update
     respond_to do |format|
-      if @employee.update(employee_params)
+      if @employee.update(update_employee_params)
         session[:employee] = nil
         flash[:info] = "更新しました。"
         format.html { redirect_to @employee }
@@ -83,5 +83,10 @@ class EmployeesController < ApplicationController
     def employee_params
       position = params[:employee][:position]
       params.require(:employee).permit(:name, :join_date, :gender_id, :email, profile_image_attributes: [:image]).merge(position: (position.empty? ? "なし" : position))
+    end
+
+    def update_employee_params
+      position = params[:employee][:position]
+      params.require(:employee).permit(:name, :join_date, :gender_id, :email, profile_image_attributes: [:image, :_destroy, :id]).merge(position: (position.empty? ? "なし" : position))
     end
 end

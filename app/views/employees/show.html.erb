@@ -17,47 +17,49 @@
 
 <div class="center-content">
   <div class="row">
-    <div class="prof-image-container">
-      <%= image_tag @employee.profile_image.nil? ? "/assets/default.jpg" : @employee.profile_image.image.to_s %>
+    <div class="image-content col-md-3">
+      <div class="prof-image-container">
+        <%= image_tag @employee.profile_image.nil? ? "/assets/default.jpg" : @employee.profile_image.image.to_s %>
+      </div>
     </div>
-    <div class="container col-sm-10">
+    <div class="container col-md-9">
       <div class="row row-show">
-        <div class="col-md-5">
+        <div class="col-md-4">
           名前
         </div>
-        <div class="col-md-6">
+        <div class="col-md-8">
           <%= @employee.name %>
         </div>
       </div>
       <div class="row row-show">
-        <div class="col-md-5">
+        <div class="col-md-4">
           入社日
         </div>
-        <div class="col-md-6">
+        <div class="col-md-8">
           <%= @employee.join_date.to_date.strftime("%Y年%-m月%-d日") %>
         </div>
       </div>
       <div class="row row-show">
-        <div class="col-md-5">
+        <div class="col-md-4">
           性別
         </div>
-        <div class="col-md-6">
+        <div class="col-md-8">
           <%= @employee.gender.name %>
         </div>
       </div>
       <div class="row row-show">
-        <div class="col-md-5">
+        <div class="col-md-4">
           役職
         </div>
-        <div class="col-md-6">
+        <div class="col-md-8">
           <%= @employee.position %>
         </div>
       </div>
       <div class="row row-show">
-        <div class="col-md-5">
-          メールアドレス
+        <div class="col-md-4">
+          eメール
         </div>
-        <div class="col-md-6">
+        <div class="col-md-8">
           <%= @employee.email.blank? ? "設定されていません" : @employee.email %>
         </div>
       </div>

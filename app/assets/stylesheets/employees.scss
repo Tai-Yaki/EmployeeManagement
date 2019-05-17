@@ -72,6 +72,12 @@
       margin-bottom: 3rem;
     }
 
+    .input-margin {
+      input, & select {
+        margin: 0 1rem;
+      }
+    }
+
     .form-flex {
       display: flex;
     }
@@ -128,16 +134,20 @@
   .image-content {
     .image-preview {
       position: relative;
+      margin: auto;
+      margin-bottom: 2rem;
     }
 
     .image-setter {
       position: absolute;
       top: 0;
+      bottom: 0;
+      right: 0;
       left: 0;
 
       width: 13rem;
       height: 13rem;
-      margin-left: 15px;
+      margin-right: 15px;
 
       cursor: pointer;
 

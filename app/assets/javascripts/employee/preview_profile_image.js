@@ -11,7 +11,7 @@ $(document).on("ready page:load", function() {
   
       reader.onload = (function(file) {
         return function(e) {
-          $preview.empty();
+          $preview.children("img").remove();
           $preview.append($("<img>").attr({
             src: e.target.result,
             class: "preview",
