@@ -30,7 +30,7 @@ class EmployeesController < ApplicationController
   def create
     respond_to do |format|
       @employee = Employee.new(employee_params)
-      if @employee.save!
+      if @employee.save
         session[:employee] = nil
         flash[:info] = "登録しました。"
         format.html { redirect_to @employee }
