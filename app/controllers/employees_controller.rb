@@ -5,7 +5,7 @@ class EmployeesController < ApplicationController
   # GET /employees.json
   def index
     session[:employee] = nil
-    @employees = Employee.all
+    @employees = Employee.all.order(:id)
   end
 
   # GET /employees/1
