@@ -22,7 +22,7 @@ class EmployeesController < ApplicationController
   # GET /employees/1/edit
   def edit
     @employee = Employee.new(session[:employee]) if session[:employee]
-    @employee.build_profile_image
+    @employee.build_profile_image if @employee.profile_image.nil?
   end
 
   # POST /employees
