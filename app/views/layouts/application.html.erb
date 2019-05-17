@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>EmployeeManagement</title>
+    <title>じゅぎょかん！</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,9 +11,12 @@
 
   <body>
     <div class="bg-info top-title">
-      <h2><%= link_to "従業員管理システム", employees_path %> <%= yield :title %> </h2>
+      <h2><%= link_to "じゅぎょかん！", employees_path %></h2>
     </div>
 
-    <%= yield %>
+    <div class="<%= yield :page_class %>">
+      <h1 class="page-title"> <%= yield :title %> </h1>
+      <%= yield %>
+    </div>
   </body>
 </html>

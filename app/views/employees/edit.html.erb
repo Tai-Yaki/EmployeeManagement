@@ -1,10 +1,11 @@
-<div class="employees">
-  <% content_for :title do %>
-    ／ 編集
-  <% end %>
+<% content_for :page_class do %>
+  employees
+<% end %>
+<% content_for :title do %>
+  情報編集
+<% end %>
 
-  <div class="center-content">
-    <% @submit_str = "更新" %>
-    <%= render 'form', employee: @employee %>
-  </div>
+<div class="center-content">
+  <% @submit_str = "更新" %>
+  <%= render 'form', employee: @employee %>
 </div>

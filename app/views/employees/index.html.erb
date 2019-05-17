@@ -1,65 +1,66 @@
-<div class="employees">
-  <% if flash[:info] %>
-    <div class="alert alert-info flash-md"><%= flash[:info] %></div>
-  <% else %>
-    <% flash.each do |message_type, messages| %>
-      <% messages.each do |message| %>
-        <div class="alert alert-<%= message_type %>"><%= message[1][0] %></div>
-      <% end %>
+<% content_for :page_class do %>
+  employees
+<% end %>
+<% if flash[:info] %>
+  <div class="alert alert-info flash-md"><%= flash[:info] %></div>
+<% else %>
+  <% flash.each do |message_type, messages| %>
+    <% messages.each do |message| %>
+      <div class="alert alert-<%= message_type %>"><%= message[1][0] %></div>
     <% end %>
   <% end %>
+<% end %>
 
-  <div class="top-content">
-    <%= button_to("新規登録", {action: "new"}, method: :get, class: "btn-lg btn-primary" ) %>
-  </div>
-
-  <table class="table">
-    <thead class="thead-dark">
-      <tr>
-        <th>
-          #
-        </th>
-        <th>
-          名前
-        </th>
-        <th>
-          入社日
-        </th>
-        <th>
-          性別
-        </th>
-        <th>
-          役職
-        </th>
-        <th class="btn-th"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @employees.each_with_index do |employee, i| %>
-        <tr>
-          <td scope="row">
-            <%= i + 1 %>
-          </td>
-          <td>
-            <%= employee.name %>
-          </td>
-          <td>
-            <%= employee.join_date.to_date.strftime("%Y年%-m月%-d日") %>
-          </td>
-          <td>
-            <%= employee.gender.name %>
-          </td>
-          <td>
-            <%= employee.position %>
-          </td>
-          <td class="btn-td">
-            <div class="btn-wrap">
-              <%= button_to("詳細", {action: "show", id: employee.id}, method: :get, class: "btn-lg btn-outline-primary" ) %>
-              <%= button_to("編集", {action: "edit", id: employee.id}, method: :get, class: "btn-lg btn-outline-primary" ) %>
-            </div>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+<div class="top-content">
+  <%= button_to("新規登録", {action: "new"}, method: :get, class: "btn-lg btn-primary" ) %>
 </div>
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th>
+        #
+      </th>
+      <th>
+        名前
+      </th>
+      <th>
+        入社日
+      </th>
+      <th>
+        性別
+      </th>
+      <th>
+        役職
+      </th>
+      <th class="btn-th"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @employees.each_with_index do |employee, i| %>
+      <tr>
+        <td scope="row">
+          <%= i + 1 %>
+        </td>
+        <td>
+          <%= employee.name %>
+        </td>
+        <td>
+          <%= employee.join_date.to_date.strftime("%Y年%-m月%-d日") %>
+        </td>
+        <td>
+          <%= employee.gender.name %>
+        </td>
+        <td>
+          <%= employee.position %>
+        </td>
+        <td class="btn-td">
+          <div class="btn-wrap">
+            <%= button_to("詳細", {action: "show", id: employee.id}, method: :get, class: "btn-lg btn-outline-primary" ) %>
+            <%= button_to("編集", {action: "edit", id: employee.id}, method: :get, class: "btn-lg btn-outline-primary" ) %>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
