@@ -11,28 +11,26 @@ class EmployeesController < ApplicationController
   # GET /employees/1
   # GET /employees/1.json
   def show
-    @title = "詳細"
   end
 
   # GET /employees/new
   def new
     @employee = Employee.new(session[:employee] || {})
-    @title = "新規登録"
+    @employee.build_profile_image
   end
 
   # GET /employees/1/edit
   def edit
     @employee = Employee.new(session[:employee]) if session[:employee]
-    @title = "編集"
+    @employee.build_profile_image
   end
 
   # POST /employees
   # POST /employees.json
   def create
-    @employee = Employee.new(employee_params)
-
     respond_to do |format|
-      if @employee.save
+      @employee = Employee.new(employee_params)
+      if @employee.save!
         session[:employee] = nil
         flash[:info] = "登録しました。"
         format.html { redirect_to @employee }
@@ -84,6 +82,6 @@ class EmployeesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def employee_params
       position = params[:employee][:position]
-      params.require(:employee).permit(:name, :join_date, :gender_id, :email).merge(position: (position.empty? ? "なし" : position))
+      params.require(:employee).permit(:name, :join_date, :gender_id, :email, profile_image_attributes: [:image]).merge(position: (position.empty? ? "なし" : position))
     end
 end

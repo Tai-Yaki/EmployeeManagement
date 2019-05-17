@@ -1,4 +1,8 @@
 <div class="employees">
+  <% content_for :title do %>
+    ／ 編集
+  <% end %>
+
   <div class="center-content">
     <% @submit_str = "更新" %>
     <%= render 'form', employee: @employee %>

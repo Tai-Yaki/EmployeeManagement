@@ -23,7 +23,7 @@
     justify-content: center;
 
     & > * {
-      margin-right: 15px;
+      margin-right: 1.5rem;
     }
   }
 
@@ -71,6 +71,10 @@
     .form-group {
       margin-bottom: 3rem;
     }
+
+    .form-flex {
+      display: flex;
+    }
   }
 
   .actions {
@@ -106,5 +110,50 @@
   .row-show {
     margin-bottom: 2rem;
     font-size: 3rem;
+  }
+
+  .profile-container {
+    display: flex;
+  }
+
+  .image-preview, .prof-image-container {
+    width: 13rem;
+    height: 13rem;
+    padding: 0;
+    margin-bottom: 2rem;
+    border: 0.1rem solid black;
+    background-image: url("/assets/default.jpg");
+  }
+
+  .image-content {
+    .image-preview {
+      position: relative;
+    }
+
+    .image-setter {
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      width: 13rem;
+      height: 13rem;
+      margin-left: 15px;
+
+      cursor: pointer;
+
+      text-align: center;
+    }
+
+    .image-camera {
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 0.5;
+    }
+  }
+
+  #prof-image {
+    width: 100%;
+    display: none;
   }
 }

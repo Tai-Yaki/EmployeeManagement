@@ -11,7 +11,7 @@
 
   <body>
     <div class="bg-info top-title">
-      <h2><%= link_to "従業員管理システム", employees_path %> <%= "／ #{ @title }" if @title %> </h2>
+      <h2><%= link_to "従業員管理システム", employees_path %> <%= yield :title %> </h2>
     </div>
 
     <%= yield %>

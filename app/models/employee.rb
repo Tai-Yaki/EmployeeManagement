@@ -6,4 +6,6 @@ class Employee < ApplicationRecord
   validates :email, format: { with: VALID_EMAIL_REGEX }, allow_blank: true
 
   belongs_to :gender
+  has_one :profile_image, dependent: :destroy
+  accepts_nested_attributes_for :profile_image
 end
