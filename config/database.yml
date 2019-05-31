@@ -26,5 +26,6 @@ test:
 production:
   <<: *default
   adapter: postgresql
+  database: employee_management
   encoding: unicode
   pool: 5
