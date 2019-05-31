@@ -1,0 +1,13 @@
+current directory: /Users/taiki/Desktop/Program/Ruby/practice/EmployeeManagement/vendor/bundle/ruby/2.6.0/gems/json-2.2.0/ext/json
+/Users/taiki/.rbenv/versions/2.6.1/bin/ruby -I /Users/taiki/.rbenv/versions/2.6.1/lib/ruby/2.6.0 -r ./siteconf20190531-8303-lhqwer.rb extconf.rb
+creating Makefile
+
+current directory: /Users/taiki/Desktop/Program/Ruby/practice/EmployeeManagement/vendor/bundle/ruby/2.6.0/gems/json-2.2.0/ext/json
+make "DESTDIR=" clean
+
+current directory: /Users/taiki/Desktop/Program/Ruby/practice/EmployeeManagement/vendor/bundle/ruby/2.6.0/gems/json-2.2.0/ext/json
+make "DESTDIR="
+make: Nothing to be done for `all'.
+
+current directory: /Users/taiki/Desktop/Program/Ruby/practice/EmployeeManagement/vendor/bundle/ruby/2.6.0/gems/json-2.2.0/ext/json
+make "DESTDIR=" install

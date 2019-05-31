@@ -44,6 +44,8 @@ gem 'faker'
 
 gem 'carrierwave'
 
+gem 'fog'
+
 gem 'rmagick'
 
 gem "jquery-rails"
