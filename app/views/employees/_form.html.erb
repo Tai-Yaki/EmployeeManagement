@@ -1,13 +1,3 @@
-<% if flash[:info] %>
-  <div class="alert alert-info"><%= flash[:info] %></div>
-<% else %>
-  <% flash.each do |message_type, messages| %>
-    <% messages.each do |message| %>
-      <div class="alert alert-<%= message_type %>"><%= message[1][0] %></div>
-    <% end %>
-  <% end %>
-<% end %>
-
 <%= form_with(model: employee, local: true, class: "form") do |form| %>
   <div class="row">
     <div class="image-content col-md-4">

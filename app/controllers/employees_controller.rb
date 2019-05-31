@@ -1,5 +1,6 @@
 class EmployeesController < ApplicationController
   before_action :set_employee, only: [:show, :edit, :update, :destroy]
+  before_action :set_current_user
 
   # GET /employees
   # GET /employees.json
@@ -32,12 +33,12 @@ class EmployeesController < ApplicationController
       @employee = Employee.new(employee_params)
       if @employee.save
         session[:employee] = nil
-        flash[:info] = "登録しました。"
+        flash[:info] = ["登録しました。"]
         format.html { redirect_to @employee }
         format.json { render :show, status: :created, location: @employee }
       else
         session[:employee] = @employee.attributes.slice(*employee_params.keys)
-        flash[:danger] = @employee.errors.keys.map { |key| [key, @employee.errors.full_messages_for(key)] }.to_h 
+        flash[:danger] = @employee.errors.full_messages
         format.html { redirect_to :new_employee }
         format.json { render json: @employee.errors, status: :unprocessable_entity }
       end
@@ -50,12 +51,12 @@ class EmployeesController < ApplicationController
     respond_to do |format|
       if @employee.update(update_employee_params)
         session[:employee] = nil
-        flash[:info] = "更新しました。"
+        flash[:info] = ["更新しました。"]
         format.html { redirect_to @employee }
         format.json { render :show, status: :ok, location: @employee }
       else
         session[:employee] = @employee.attributes.slice(*employee_params.keys)
-        flash[:danger] = @employee.errors.keys.map { |key| [key, @employee.errors.full_messages_for(key)] }.to_h 
+        flash[:danger] = @employee.errors.full_messages
         format.html { redirect_to :edit_employee }
         format.json { render json: @employee.errors, status: :unprocessable_entity }
       end
@@ -67,9 +68,45 @@ class EmployeesController < ApplicationController
   def destroy
     @employee.destroy
     respond_to do |format|
-      flash[:info] = "削除しました。"
+      flash[:info] = ["削除しました。"]
       format.html { redirect_to employees_url }
       format.json { head :no_content }
+    end
+  end
+
+  def login
+    if !session[:user_id].nil?
+      flash[:info] = ["すでにログインしています"]
+      redirect_to employees_path
+    end
+  end
+
+  def login_user
+    if current_user = Employee.find_by(email: params[:email])
+      if current_user = current_user.authenticate(params[:password])
+        flash[:info] = ["ログインしました。"]
+        session[:user_id] = current_user.id
+        redirect_path = "/employees"
+      else
+        flash[:danger] = ["パスワードが違います。"]
+        redirect_path = "/login"
+      end
+    else
+      flash[:danger] = ["登録されていないEメールです。"]
+      redirect_path = "/login"
+    end
+
+    redirect_to redirect_path
+  end
+
+  def logout
+    if !session[:user_id].nil?
+      session[:user_id] = nil
+      flash[:info] = ["ログアウトしました。"]
+      redirect_to root_path
+    else
+      flash[:danger] = ["不正な操作です。"]
+      redirect_to root_path
     end
   end
 
@@ -82,11 +119,16 @@ class EmployeesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def employee_params
       position = params[:employee][:position]
-      params.require(:employee).permit(:name, :join_date, :gender_id, :email, profile_image_attributes: [:image]).merge(position: (position.empty? ? "なし" : position))
+      params.require(:employee).permit(:name, :join_date, :gender_id, :email, profile_image_attributes: [:image])
+        .merge(position: (position.empty? ? "なし" : position), password: " ", password_confirmation: " ")
     end
 
     def update_employee_params
       position = params[:employee][:position]
       params.require(:employee).permit(:name, :join_date, :gender_id, :email, profile_image_attributes: [:image, :_destroy, :id]).merge(position: (position.empty? ? "なし" : position))
+    end
+
+    def set_current_user
+      @current_user = Employee.find_by_id(session[:user_id])
     end
 end

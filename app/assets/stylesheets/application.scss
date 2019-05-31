@@ -28,9 +28,14 @@ body {
 
   .top-title {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
+    align-items: center;
     padding: 0.5rem 2.5%;
 
+    & :first-child {
+      margin-right: auto;
+    }
+    
     h2, a {
       color: white;
     }
@@ -50,6 +55,22 @@ body {
     .nav {
       justify-content: flex-end;
     }
+
+    .current_user_show_btn{
+      margin-right: 15px;
+    }
+    
+
+    .logout_btn a {
+      color: red;
+      font-weight: bold;
+    }
+  }
+
+  .flash-space {
+    width: 80%;
+    margin: 15px auto;
+    font-size: 2rem;
   }
 
   .page-title {

@@ -12,6 +12,22 @@
   <body>
     <div class="bg-info top-title">
       <h2><%= link_to "じゅぎょかん！", employees_path %></h2>
+      <% if @current_user %>
+        <h4 class="current_user_show_btn"><%= link_to @current_user.name, employee_path(@current_user.id) %></h4>
+        <h5 class="logout_btn"><%= link_to "ログアウト", logout_path %></h5>
+      <% else %>
+        <h4 class="login_btn"><%= link_to "ログイン", login_path %></h4>
+      <% end %>
+    </div>
+
+    <div class="flash-space">
+      <% if flash.any? %>
+        <% flash.each do |message_type, messages| %>
+          <% messages.each do |message| %> 
+            <div class="alert alert-<%= message_type %> flash-sm"><%= message %></div>
+          <% end %>
+        <% end %>
+      <% end %>
     </div>
 
     <div class="<%= yield :page_class %>">

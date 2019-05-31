@@ -1,0 +1,7 @@
+<%= form_with(local: true) do |form| %>
+  <%= form.label "Eメール", for: "email" %>
+  <%= form.text_field :email %>
+  <%= form.label "パスワード", for: "password" %>
+  <%= form.text_field :password %>
+  <%= form.submit %>
+<% end %>

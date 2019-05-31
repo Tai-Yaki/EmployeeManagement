@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2019_05_15_015339) do
     t.datetime "updated_at", null: false
     t.string "email"
     t.string "picture"
+    t.string "password_digest"
   end
 
   create_table "genders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
